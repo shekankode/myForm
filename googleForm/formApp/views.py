@@ -32,7 +32,7 @@ def preview(request):
 
     #if request.method == 'POST':
 
-    print request.POST.getlist('answersssss')
+
     formName= FormList()
     formName.save()
 
@@ -56,7 +56,7 @@ def preview(request):
             #print i,ac
             answerList = request.POST.getlist(ansName)
             ac+=1
-            print ansName,answerList
+            # print ansName,answerList
             if len(answerList)!=0:
                 break
             else:

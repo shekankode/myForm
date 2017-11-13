@@ -29,6 +29,6 @@ urlpatterns = [
     url(r'^preview/$', views.preview),
     url(r'^show/',views.show),
     url(r'^viewForms/$',views.viewForm),
-    #url(r'^',views.login_check),
+    url(r'^',views.login_check),
 
 ]
