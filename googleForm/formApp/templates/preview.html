@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<h2>Your new form is ready!!</h2>
+<div class="container">
+<div class="jumbotron">
+    <form action="/save/" method="POST">
+        {% csrf_token%}
+        <div id="header">
+            {%for i in h%}
+              {%if i.formNo == f %}
+            <div class="row " style="text-align:center"><h3>{{i.form_title}}</h3></div>
+            <div class="row " style="text-align:center"><h5>{{i.form_description}}</h5></div>
+            {%endif%}
+            {%endfor%}
+        </div>
+
+        <div  id="qaset">
+        {%for i in q%}
+            {%if i.formNo == f%}
+            <div id="ques">
+                Q. {{i.ques}} ?
+            </div>
+            {%endif%}
+            <div id="ansset" class="form-group">
+                <ul>
+                {%for j in a %}
+                {%if j.question == i%}
+                    <li id ="ans"><input class="" type={{j.fieldType}} >{{j.ans}}</li>
+                    {%else%}
+                {%endif%}
+                {%endfor%}
+                    </ul>
+            </div>
+           {%endfor%}
+        </div>
+<div style="text-align:center">
+    <input type="submit" style="text-align:center" class="btn btn-success btn-center">
+</div>
+
+    </form>
+
+</div>
+</div>
+</body>
+</html>

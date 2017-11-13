@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  .modal-header, h4, .close {
+      background-color: #5cb85c;
+      color:white !important;
+      text-align: center;
+      font-size: 30px;
+  }
+  .modal-footer {
+      background-color: #f9f9f9;
+  }
+  body {
+    background-color: #505050;
+}
+
+
+
+
+ /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+
+      height:100px;
+    }
+
+
+    p.monospace {
+    font-family: "Monospace";
+    font-size: 20px;
+     font-weight: 900;
+     text-align: center;
+     color: white;
+}
+
+
+
+
+.jumbotron{
+
+      margin-bottom: 50px;
+margin-top: 100px;
+border: 50px  grey;
+height:400px
+
+
+
+
+}
+.button-margin{
+
+      margin-bottom: 20;
+      margin-top: 20;
+
+
+
+}
+
+
+.btn-xl {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:20%;
+
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+{% if invalid %}
+<script>alert('Invalid Credentials')</script>
+{%endif%}
+
+<nav class="navbar navbar-inverse">
+  <div class="container text-center" >
+    <div class="navbar-header ">
+
+      <div class="container text-center">
+      <a href="#" class="btn btn-danger btn-lg ">
+      <span class="glyphicon glyphicon-list-alt" style="font-size:30px";></span><p class="monospace" > Custom Forms </p>
+    </a>
+      </div>
+    </div>
+
+
+    </div>
+
+</nav>
+
+
+<div class="container text-center">
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1 style="font-family: 'Monospace';font-weight: 500" >Create beautiful forms</h1>
+      <p style="font-family: 'Monospace';font-weight: bolder;">Login to start creating forms</p>
+
+  <!-- Trigger the modal with a button -->
+
+  <button type="button" class="btn btn-primary btn-lg btn-xl " id="myBtn" >
+      <span class="glyphicon glyphicon-log-in" style="font-size:35px";></span>
+      <p class="monospace" > <p style="font-size:30px ;font-family: 'Monospace'; font-weight: 900" > Login</p></button>
+
+</div>
+</div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+
+
+       <form method="post" action="/home/">
+
+            {% csrf_token %}
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+        </div>
+        <div class="modal-body" style="padding:40px 50px;">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text"  name = "username" class="form-control" id="usrname" placeholder="Enter username">
+            </div>
+
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="password"  name = "password"class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" value="" checked>Remember me</label>
+            </div>
+
+              <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger btn-default pull-right" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+
+        </div>
+      </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+
+    $("#myBtn").click(function(){
+        $("#myModal").modal();
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<script>
+    function myfun(formName,idValue){
+    console.log(idValue)
+        var d= document.getElementById(idValue);
+        d.setAttribute("name","formID");
+        console.log(d);
+        formName.submit()
+    }
+</script>
+</head>
+<body>
+<form action="/viewForms/" method="POST" name="myForm">
+    {% csrf_token %}
+    <div id="main">
+{%for i in formsList%}
+
+<script>
+
+var d=document.createElement('div');
+d.innerHTML='<input type="button" id="sd" onclick="myfun(this.id)"  value={{i.pk}} /><br>';
+document.getElementById('main').appendChild(d)
+</script>
+
+        {%endfor%}
+
+    </div>
+</form>
+</body>
+</html>
